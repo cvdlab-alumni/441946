@@ -1,5 +1,5 @@
 from pyplasm import *
-raggio = 0.1
+raggio = 0.3
 #Function to translate color range from [0,1] to [0,255]
 def RGB(color):
 	return Color4f([color[0]/255.0,
@@ -58,7 +58,8 @@ floor5c = T(3)(0.4)(floor5s)
 columns = PROD([Q(5.2),Q(11.4)])
 columns = AlignToCenter([floor1,columns])
 
-floor6 = DIFFERENCE([floor5,T([1,2])([0.5,0.5])(PROD([Q(5),Q(11)]))])
+floor6 = DIFFERENCE([floor5,T([1,2])([0.8,1])(PROD([Q(4.4),Q(10)]))])
+
 floor6 = COLOR(RGB([197,232,235]))(floor6)
 floor6 = T(3)(2)(floor6)
 floor6 = AlignToCenter([floor1,floor5,floor6])
