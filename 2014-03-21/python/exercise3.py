@@ -30,5 +30,9 @@ floor2_3d = COLOR(RGB([205,133,63]))(floor2_3d)
 floor3_3d = COLOR(RGB([205,133,63]))(floor3_3d)
 floor4_3d = COLOR(RGB([205,133,63]))(floor4_3d)
 floor5_3d = COLOR(RGB([205,133,63]))(floor5_3d)
-
-VIEW(STRUCT([floor1_3d,floor2_3d,floor3_3d,floor4_3d,floor5_3d]))
+print len(colonneB)
+print len(colonneA)
+colonneTOT = []
+for i in range(36):
+	colonneTOT = colonneTOT + [JOIN([colonneA[i],colonneB[i]])]
+VIEW(STRUCT([floor1_3d,floor2_3d,floor3_3d,floor4_3d,floor5_3d] + colonneTOT))
