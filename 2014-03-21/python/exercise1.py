@@ -89,3 +89,7 @@ for i in colonneB:
 
 # for x in colonne: T(3)(0.4)(colonne)
 two_and_half_model = STRUCT(colonneB + colonneA +  [floor1,floor2,floor3,floor4,floor5c,floor6])
+
+#VIEW(two_and_half_model)
+# VIEW(SKEL_1(building))
+# VIEW(T(1)(1)(colonna2D(0.1)))

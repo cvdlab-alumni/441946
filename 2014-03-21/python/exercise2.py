@@ -62,4 +62,4 @@ verticalWest =  T(1)(8.4)(verticalEast)
 
 mock_up_3D = STRUCT([two_and_half_model,verticalNorth,verticalSouth,verticalEast,verticalWest])
 
-VIEW(mock_up_3D)
+# VIEW(mock_up_3D)
