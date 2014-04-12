@@ -172,11 +172,51 @@ floor6 = AlignToCenter([floor1,floor5,floor6])
 floor_piccolo =  PROD([Q(4.5),Q(10.7)]) 
 floor_piccolo = AlignToCenter([floor1,floor_piccolo])
 
-rialzo_tetto = DIFFERENCE([floor5,floor_piccolo]))
-VIEW(PROD([rialzo_tetto,Q(0.2)]))
+floorGrande = PROD([Q(5.8),Q(12)])
+floorGrande = AlignToCenter([floor1,floorGrande])  
+
+
+rialzo_tetto = DIFFERENCE([floorGrande,floor_piccolo])
+rialzo_tetto = PROD([rialzo_tetto,Q(0.3)])
 rialzo_tetto = T(3)(2.77)(rialzo_tetto)
-rialzo_tetto = JOIN([rialzo_tetto,T(3)(0.2)(rialzo_tetto)])
-# VIEW(STRUCT([piano_base,secondo_piano,rialzo_tetto]))
+rialzo_tetto = COLOR(RGB([180,180,180]))(rialzo_tetto)
+
+
+piano_rialzo_interno =  PROD([Q(3.2359),Q(9.8696)])
+piano_rialzo_interno = AlignToCenter([floor1,piano_rialzo_interno])  
+piano_piccolo = PROD([Q(1.923),Q(8.5696)])
+piano_piccolo = AlignToCenter([floor1,piano_piccolo]) 
+rialzo_interno = DIFFERENCE([piano_rialzo_interno,piano_piccolo])
+rialzo_interno = PROD([rialzo_interno,Q(0.3)])
+rialzo_interno = T([1,3])([0.05,2.77])(rialzo_interno)
+rialzo_interno = COLOR(RGB([180,180,180]))(rialzo_interno)
+
+
+
+rialzo_facciate = CUBOID([5.8,0.3483,0.6])
+rialzo_facciate = T([1,2,3])([1.3,1.2,3.07])(rialzo_facciate)
+
+
+triangolo_tetto = JOIN([Q(6.6),MK([3.3,0.8])])
+triangolo2 = T(1)(0.2)(JOIN([Q(6.2),MK([3.1,0.6])]))
+triangolo_tetto_3d = PROD([triangolo_tetto,Q(0.1)])
+triangolo_sporgenza = DIFFERENCE([triangolo_tetto,triangolo2 ])
+triangolo_sporgenza_3d = PROD([triangolo_sporgenza,Q(0.3)])
+
+sopra_facciata_triangolo = STRUCT([triangolo_sporgenza_3d,T(3)(0.1)(triangolo_tetto_3d)])
+sopra_facciata_triangolo = R([2,3])(PI/2)(sopra_facciata_triangolo)
+sopra_facciata_triangolo = T([1,2,3])([0.9,1.5,3.67])(sopra_facciata_triangolo)
+
+sopra_facciata = STRUCT([sopra_facciata_triangolo,rialzo_facciate])
+sopra_facciata_front = sopra_facciata
+sopra_facciata_retro = T([2])(11.65)(sopra_facciata)
+
+sopra_facciate = STRUCT([sopra_facciata_retro,sopra_facciata_front])
+sopra_facciate = COLOR(RGB([143,118,92]))(sopra_facciate)
+
+terzo_piano = STRUCT([rialzo_tetto,rialzo_facciate,sopra_facciate,rialzo_interno])
+
+VIEW(STRUCT([piano_base,secondo_piano,terzo_piano]))
 
 
 # VIEW(pezzo_muro_interno_piccolo)
