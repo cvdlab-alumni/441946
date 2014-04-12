@@ -61,5 +61,5 @@ verticalEast =  R([1,2])(PI/2)(R([2,3])(PI/2)(STRUCT(east)))
 verticalWest =  T(1)(8.4)(verticalEast)
 
 mock_up_3D = STRUCT([two_and_half_model,verticalNorth,verticalSouth,verticalEast,verticalWest])
-
 VIEW(mock_up_3D)
+# 
