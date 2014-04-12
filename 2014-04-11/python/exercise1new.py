@@ -32,7 +32,11 @@ def RGB(color):
 def colonna2D(centro = [0,0]):
 	return JOIN(T([1,2])([centro[0],centro[1]])(MAP(circle(raggio))(INTERVALS(2*PI)(32))))
 
-
+def sphere1(p): 
+	return [COS(p[0]), SIN(p[0])]
+	
+def domain(n):
+	return INTERVALS(PI)(n)
 
 floor1 = PROD([Q(8.4),Q(14.4)])
 
@@ -179,7 +183,7 @@ floorGrande = AlignToCenter([floor1,floorGrande])
 rialzo_tetto = DIFFERENCE([floorGrande,floor_piccolo])
 rialzo_tetto = PROD([rialzo_tetto,Q(0.3)])
 rialzo_tetto = T(3)(2.77)(rialzo_tetto)
-rialzo_tetto = COLOR(RGB([180,180,180]))(rialzo_tetto)
+rialzo_tetto = COLOR(RGB([218,189,171]))(rialzo_tetto)
 
 
 piano_rialzo_interno =  PROD([Q(3.2359),Q(9.8696)])
@@ -189,7 +193,7 @@ piano_piccolo = AlignToCenter([floor1,piano_piccolo])
 rialzo_interno = DIFFERENCE([piano_rialzo_interno,piano_piccolo])
 rialzo_interno = PROD([rialzo_interno,Q(0.3)])
 rialzo_interno = T([1,3])([0.05,2.77])(rialzo_interno)
-rialzo_interno = COLOR(RGB([180,180,180]))(rialzo_interno)
+rialzo_interno = COLOR(RGB([218,189,171]))(rialzo_interno)
 
 
 
@@ -216,7 +220,8 @@ sopra_facciate = COLOR(RGB([143,118,92]))(sopra_facciate)
 
 terzo_piano = STRUCT([rialzo_tetto,rialzo_facciate,sopra_facciate,rialzo_interno])
 
-VIEW(STRUCT([piano_base,secondo_piano,terzo_piano]))
+model = STRUCT([piano_base,secondo_piano,terzo_piano])
+# VIEW(STRUCT([piano_base,secondo_piano,terzo_piano]))
 
 
 # VIEW(pezzo_muro_interno_piccolo)
